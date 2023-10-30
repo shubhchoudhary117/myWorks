@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'ResultPage.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="content">
+                <h2 class="text-center">BOARD OF SECONDARY EDUCATION, Madhya Pradesh <br><span>(Examination Results - 2021)
+
+                    1X1.gif (807 bytes)</span>
+                    </h2>
+                
+            </div>
+        </nav><!--end of navigation part-->
+
+        <div class="heading"><h5>High School Certificate Examination(HSC)-10th Class Result-2021</h5></div>
+    
+        <div class="section1">
+            <div class="student-information">
+                <table border="1">
+                    <th >Center Code</th>
+                    <th>School Code</th>
+                    <th>Enrollment Number</th>
+                    <th>Regular/Private</th>
+                    <th>Application No</th>
+                    <th>Roll Number</th>
+
+                    {% for stu in data %}
+
+                    <tr>
+                        <td>542001</td>
+                        <td>542073</td>
+                        <td>{{stu.Enrollment}}</td>
+                        <td>{{stu.RegularPrivate}}</td>
+                        <td>{{stu.Application}}</td>
+                        <td>{{stu.RollNo}}</td>
+                    </tr>
+                </table>
+
+            </div><!--end of student info-->
+        </div><!--end of section 1-->
+
+
+        <div class="section2">
+            <div class="student-info-2">
+                <table border="2" style="width: 600px;background-color: #fff;">
+                 <tr>
+                    <td><b>Student Name</b></td> 
+                    <td>{{stu.StudentName}} <td> 
+                  </tr>
+                  <tr>
+                    <td><b>Father's Name</b></td>
+                    <td>{{stu.FatherName}}</td>
+                  </tr>
+                  <tr>
+                    <td><b>Mother's Name</b></td>
+                    <td>{{stu.MotherName}}</td>
+                  </tr>
+                  <tr>
+                    <td><b>Date Of Birth</b></td>
+                    <td>{{stu.BirthDate}}</td>
+                  </tr>
+                    </th>
+                </table>
+            </div><!--end of student name info part-->
+        </div><!--end of section 2-->
+
+        <div class="heading3"><h5>Result:  Pass in frist division</h5></div>
+        <div class="section3" >
+            <div class="student-marks-table">
+                <table border="2px">
+                    <thead>
+                        <tr>
+                            <th>Subject Code</th>
+                            <th>Subject Name</th>
+                            <th>Theory Marks</th>
+                            <th>Practical/Internal Marks</th>
+                            <th>Total Marks</th>
+                            <th>Remark</th>
+                        </tr>
+                    </thead>
+
+                    <tbody style="background-color: blanchedalmond;">
+                        <tr style="text-align: center;">
+                            <td>001</td>
+                            <td>Hindi</td>
+                            <td>{{stu.Hindi}}</td>
+                            <td></td>
+                           <td>82</td>
+                            <td>{% if stu.Hindi > 75 %} # {% else %} {% endif %}</</td>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <td>004</td>
+                            <td>english</td>
+                            <td>{{stu.English}}</td>
+                            <td></td>
+                           <td>66</td>
+                            <td>{% if stu.English > 75 %} # {% else %} {% endif %}</</td>
+                        
+                        </tr>
+
+                        <tr style="text-align: center;">
+                            <td>041</td>
+                            <td>Maths</td>
+                            <td>{{stu.Maths}}</td>
+                            <td></td>
+                           <td>77</td>
+                            <td>{% if stu.Maths > 75 %} # {% else %} {% endif %}</</td>
+                        </tr>
+
+                        <tr style="text-align: center;">
+                           <td>041</td>
+                            <td>Science</td>
+                            <td>{{stu.Science}}</td>
+                            <td>22</td>
+                           <td>77</td>
+                            <td>{% if stu.Science > 75 %} # {% else %} {% endif %}</</td>
+                        </tr>
+
+                        <tr style="text-align: center;">
+                          <td>001</td>
+                            <td>Social Science</td>
+                            <td>{{stu.SocialScience}}</td>
+                            <td></td>
+                           <td>66</td>
+                            <td>{% if stu.SocialScience > 75 %} # {% else %} {% endif %}</</td>
+                        </tr>
+
+                        <tr style="text-align: center;">
+                            <td>001</td>
+                            <td>Sanskrit</td>
+                            <td>{{stu.Sanskrite}}</td>
+                            <td></td>
+                           <td>88</td>
+                            <td>{% if stu.Sanskrite > 75 %} # {% else %} {% endif %}</td>                       
+                        </tr>
+
+                        <tr style="text-align: center;font-weight: bold;background-color: cornflowerblue;">
+                            <td colspan="7" >Grand Total(Theory + Practical/Internal Marks):360/500</td>
+                        </tr>
+
+                        <tr style="text-align: center;">  
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                        {% comment %} data filling for loop end  {% endcomment %}
+                    </tbody>
+                </table>
+            </div><!--end of marksheet table-->
+
+        </div><!--end of section 3-->
+
+        <div class="section4">
+            <p>
+   
+    Parcitipated in NCC 'A' Certificate Course and obtained Grade: 
+    Environmental Education and Disaster Management: A
+A   warded Bonus Marks for participation in State/National/International level games: XX</p>
+                <small>
+                    एनसीसी 'ए' सर्टिफिकेट कोर्स में भाग लिया और ग्रेड प्राप्त किया:
+                    पर्यावरण शिक्षा और आपदा प्रबंधन: ए
+                    राज्य/राष्ट्रीय/अंतर्राष्ट्रीय स्तर के खेलों में भाग लेने के लिए पुरस्कृत बोनस अंक: XX</small>
+                    <small>प्राइवेट परिणाम बेस्ट फाइव के आधार पर तैयार किया गया है परीक्षा परिणाम में # से दर्शाए गए विषय के के प्राप्तांक को महायोग में सम्मिलित किया गया है</small>
+                    
+        </div><!--end of section 4-->
+        <div class="section5"></div>
+        <div class="section6">
+            <h6>Result declared on 15/12/2022</h6>
+            <h5>!!! NOTE: THis Information Should Not be treated as Marksheet !!!</h5>
+            <h4>Madhya Pradesh State Result</h4>
+        </div>
+    
+    
+    
+    
+    
+    </header>
+    
+</body>
+</html>

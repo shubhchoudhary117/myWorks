@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'LoginPage.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+
+</head>
+<body>
+
+    <header>
+
+        <nav>
+            <div class="content">
+                <h2 class="text-center">BOARD OF SECONDARY EDUCATION, Madhya Pradesh <br><span>(Examination Results - 2021)
+
+                    1X1.gif (807 bytes)</span>
+                    </h2>
+                
+            </div>
+        </nav><!--end of navigation part-->
+        <div class="heading">
+          </div>
+
+        <div class="section1">
+        {% if result %}
+        <div class="alert  alert-m" style="height:50px;background: #4D8DFA;">
+            {% if messages %}
+                {% for mssg in messages %}
+                    <p style='color:#fff;letter-spacing:1px;word-spacing:1px'>{{mssg}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% endif %}
+            {% comment %} <p style="padding-left: 10px;color: red;">Time:<span id="span" style="color: white;padding-left: 5px;"></span></p> {% endcomment %}
+           <div class="back">
+            <div class="table-part">
+                <h5>Higher Secondary School Certificate Examination (HSSC) - 12th Class Exam Result - 2021</h5>
+                <div class="info">
+                <form action="{% url 'Login' %}" method="POST">{% csrf_token %}
+                <div class="form-group">
+                    <label for="roll" style="padding-left: 15px;">Enter Your Roll No.</label>
+                    {{field.RollNo}}
+                </div>
+                <div class="form-group">
+                    <label for="application">Enter Application No.</label>
+                    {{field.ApplicationId}}
+                </div>
+                    <div class="butt">
+                        <button type="submit" name='submit'>Submit</button>
+                        <button type='reset'>Reset</button>
+                    </div>
+                </form>
+            </div><!--end of info part-->
+            
+            </div><!--end of table part-->
+            </div><!--end of back div -->
+
+            <div class="note">
+                <small> <b>Note:</b> Neither NIC nor <b>Board of Secondary Education, Madhya Pradesh</b> is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for immediate information to the examinees. These cannot be treated as original mark sheets. Original mark sheets are being issued by the Board separately.</small>
+            </div>
+
+            <div class="note2">
+                <p class="text-center">Hosted By National Informatics Centre (NIC)<br>
+                    Data Provided By Board of Secondary Education, Madhya Pradesh</p>
+            </div>
+
+
+
+
+        </div><!--end of secton1-->
+
+
+
+
+    </header>
+
+    
+</body>
+</html>
+
+
+
